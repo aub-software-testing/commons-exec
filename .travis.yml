@@ -18,6 +18,14 @@ sudo: true
 
 jdk:
   - oraclejdk8
-
-after_success:
-  - mvn clean cobertura:cobertura coveralls:report
+env:
+  - FIREBASE_KEY=AIzaSyDU7I6pnN322BvRNN24jRX52owAvuHH1K4 MAVEN_OPTS="-Xmx3000m"
+before_install:
+  - unset TRAVIS
+  - unset _JAVA_OPTIONS
+  - wget http://www.deflaker.org/maven/apache-maven-3.3.9.zip
+  - unzip -qq apache-maven-3.3.9.zip
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$M2_HOME/bin:$PATH
+install: true
+script: mvn -B verify
