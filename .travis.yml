@@ -16,6 +16,7 @@
 language: java
 sudo: true
 
+
 jdk:
   - oraclejdk8
 env:
